@@ -15,7 +15,6 @@ Microsoft.EntityFrameworkCore.SqlServer
 Microsoft.EntityFrameworkCore.Tools
 
 
-
 3. Add context class
 
 using Microsoft.EntityFrameworkCore;
@@ -50,8 +49,17 @@ namespace ShoppingApplication24.Models
         public DbSet<User> Users { get; set; }
     }
 }
-        
-4. 
+
+
+4. Add this in program.cs
+// Add services to the container.
+builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<ShoppingContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
+var app = builder.Build();
+
+
+5. 
 Add-Migration
 Name
 Update-Database

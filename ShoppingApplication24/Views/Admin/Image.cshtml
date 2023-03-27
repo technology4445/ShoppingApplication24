@@ -1,0 +1,40 @@
+﻿@using ShoppingApplication24.Models
+@model List<Image>
+
+<div class="box-header with-border">
+    <h3 class="box-title">Images</h3>
+</div>
+<div class="box-body">
+    <div>
+        <table class="table table-bordered" border="1" rules="all" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Image</th>
+                    <th>Product</th>
+                    <th>URL</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var image in Model)
+                {
+                    <tr>
+                        <td>@image.Id</td>
+                        <td><img style="width:80px;" src="@image.URL" /></td>
+                        <td>@image.Product.Title</td>
+                        <td>@image.URL</td>
+                        <td>
+                            <a href="@image.URL" target="_blank">View</a>&nbsp;&nbsp;
+                            <a asp-controller="Admin" asp-action="CreateUpdateImage" asp-route-id="@image.Id">Update</a>&nbsp;&nbsp;
+                            <a asp-controller="Admin" asp-action="DeleteImage" asp-route-id="@image.Id" onclick="return confirm('Are You Sure To Delete Product');">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<a target="_blank" asp-controller="Admin" asp-action="CreateUpdateImage"><button>Add Image</button></a>
+                   

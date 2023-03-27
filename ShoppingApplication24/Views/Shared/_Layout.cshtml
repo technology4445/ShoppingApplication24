@@ -1,0 +1,120 @@
+﻿@using ShoppingApplication24.Models
+@inject ShoppingContext _context
+
+@{
+    string accecctTocken = Context.Request.Cookies["UAT"];
+    User user = _context.Users.Where(x => x.AccessTocken == accecctTocken).FirstOrDefault();
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ShoppingApplication24</title>
+    @*    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ShoppingApplication24.styles.css" asp-append-version="true" />*@
+
+
+    @*bootstrap start for Admin Views*@
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/custom.css" asp-append-version="true" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+</head>
+<body>
+
+    <header>
+        <div class="navbar navbar-inverse">
+            <div class="container">
+
+                <ul class="nav navbar-nav navcenter">
+                    <li><a asp-controller="Admin" asp-action="Dashboard">Dashboard</a></li>
+                    <li><a asp-controller="Admin" asp-action="AddressDetail">AddressDetail</a></li>
+                    
+                    <li><a asp-controller="Admin" asp-action="Category">Category</a></li>
+                    
+                    <li><a asp-controller="Admin" asp-action="City">City</a></li>
+                    <li><a asp-controller="Admin" asp-action="Image">Image</a></li>
+                    <li><a asp-controller="Admin" asp-action="Order">Order</a></li>
+                    <li><a asp-controller="Admin" asp-action="OrderStatus">OrderStatus</a></li>
+                    <li><a asp-controller="Admin" asp-action="Products">Products</a></li>
+                    <li><a asp-controller="Admin" asp-action="ProductStatus">ProductStatus</a></li>
+                    <li><a asp-controller="Admin" asp-action="Role">Role</a></li>
+                    <li><a asp-controller="Admin" asp-action="SubCategory">SubCategory</a></li>
+                    <li><a asp-controller="Admin" asp-action="Users">Users</a></li>
+                    <br />
+                    @if (user == null)
+                    {
+                        <li><a asp-controller="Account" asp-action="Login">Login</a></li>    
+                        <li><a asp-controller="Account" asp-action="Register">Register</a></li>
+                    }
+                    else
+                    {
+                        <li><a>@user.Name</a></li>
+                        <li><a asp-controller="Account" asp-action="LogOut">Log Out</a></li>
+                    }
+                </ul>
+
+            </div>
+        </div>
+    </header>
+
+    <!--
+    <header>
+        <div class="navbar navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="index.html" class="navbar-brand">
+                        E-Commerce Website
+                    </a>
+                </div>
+                <ul class="nav navbar-nav navcenter">
+                    <li><a href="#">DU Exclusive</a></li>
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="#">Clothing Dresses</a></li>
+                    <li><a href="#">Shoes</a></li>
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">Sale</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">Register</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    -->
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="col-md-4"></div>
+            <div class="col-md-4 text-center">
+            &copy; 2022 - Shopping Application 24
+            @*
+            - <a asp-area="" asp-controller="Admin" asp-action="Dashboard">Dashboard</a>
+            - <a asp-area="" asp-controller="Admin" asp-action="Users">Users</a>
+            - <a asp-area="" asp-controller="Admin" asp-action="Products">Products</a>
+            *@
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </footer>
+    @*    <footer class="border-top footer text-muted">
+    <div class="container">
+    &copy; 2022 - ShoppingApplication24 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </div>
+    </footer>*@
+ 
+    @*    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>*@
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,25 @@
+﻿@using ShoppingApplication24.Models
+@model Order;
+
+<div class="container">
+    <form asp-controller="Admin" asp-action="CreateUpdateOrder" method="post">
+
+        <div class="mb-3">
+            <label asp-for="ProductId" class="form-label">Product</label>
+            <select asp-for="ProductId" class="form-control" asp-items="@ViewBag.Products"></select>
+        </div>
+        <div class="mb-3">
+            <label asp-for="BuyerId" class="form-label">Buyer</label>
+            <select asp-for="BuyerId" class="form-control" asp-items="@ViewBag.Buyer"></select>
+        </div>
+        <div class="mb-3">
+            <label asp-for="DateTime" class="form-label">AddedOn</label>
+            <input type="datetime-local" asp-for="DateTime" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label asp-for="OrderStatusId" class="form-label">OrderStatus</label>
+            <select asp-for="OrderStatusId" class="form-control" asp-items="@ViewBag.OrderStatus"></select>
+        </div>
+        <button class="btn btn-primary btnmargin">Submit</button>
+    </form>
+</div>

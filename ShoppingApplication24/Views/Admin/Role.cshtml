@@ -1,0 +1,36 @@
+﻿@using ShoppingApplication24.Models
+@model List<Role>
+
+<div class="box-header with-border">
+    <h3 class="box-title">Users Role</h3>
+</div>
+<div class="box-body">
+    <div>
+        <table class="table table-bordered" border="1" rules="all" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Action</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var role in Model)
+                {
+                    <tr>
+
+                        <td>@role.Id</td>
+                        <td>@role.Name</td>
+                        <td>
+                            <a asp-controller="Admin" asp-action="CreateUpdateRole" asp-route-id="@role.Id">Update</a>&nbsp;&nbsp;
+                            <a asp-controller="Admin" asp-action="DeleteRole" asp-route-id="@role.Id" onclick="return confirm('Are You Sure To Delete Product');">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<a target="_blank" asp-controller="Admin" asp-action="CreateUpdateRole"><button>Add Role</button></a>

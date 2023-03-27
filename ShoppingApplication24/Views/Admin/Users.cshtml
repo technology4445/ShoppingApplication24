@@ -1,0 +1,45 @@
+﻿@using ShoppingApplication24.Models
+@model List<User>
+
+<div class="box-header with-border">
+    <h3 class="box-title">Manage Users</h3>
+</div>
+<div class="box-body">
+    <div>
+        <table class="table table-bordered" border="1" rules="all" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Phone Number</th>
+                    <th>Join Date</th>
+                    <th>Role</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        
+                        <td>@user.Id</td>
+                        <td>@user.Name</td>
+                        <td>@user.Email</td>
+                        <td>@user.Password</td>
+                        <td>@user.PhoneNumber</td>
+                        <td>@user.JoinOn</td>
+                        <td>@user.Role.Name</td>
+                        <td>
+                            <a asp-controller="Admin" asp-action="CreateUpdateUsers" asp-route-id="@user.Id">Update</a>&nbsp;&nbsp;
+                            <a asp-controller="Admin" asp-action="DeleteUsers" asp-route-id="@user.Id" onclick="return confirm('Are You Sure To Delete Product');">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<a target="_blank" asp-controller="Admin" asp-action="CreateUpdateUsers"><button>Add User</button></a>

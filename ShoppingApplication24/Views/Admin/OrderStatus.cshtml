@@ -1,0 +1,37 @@
+﻿@using ShoppingApplication24.Models
+@model List<OrderStatus>
+
+<div class="box-header with-border">
+    <h3 class="box-title">Orders Status</h3>
+</div>
+<div class="box-body">
+    <div>
+        <table class="table table-bordered" border="1" rules="all" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Action</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var orderStatus in Model)
+                {
+                    <tr>
+
+                        <td>@orderStatus.Id</td>
+                        <td>@orderStatus.Name</td>
+
+                        <td>
+                            <a asp-controller="Admin" asp-action="CreateUpdateOrderStatus" asp-route-id="@orderStatus.Id">Update</a>&nbsp;&nbsp;
+                            <a asp-controller="Admin" asp-action="DeleteOrderStatus" asp-route-id="@orderStatus.Id" onclick="return confirm('Are You Sure To Delete Product');">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<a target="_blank" asp-controller="Admin" asp-action="CreateUpdateOrderStatus"><button>Add OrderStatus</button></a>

@@ -1,0 +1,29 @@
+﻿@using ShoppingApplication24.Models;
+@model AddressDetail;
+
+<div class="container">
+    <form asp-controller="Admin" asp-action="CreateUpdateAddress" method="post">
+        <div class="mb-3">
+            <label asp-for="HouseNo" class="form-label">House No</label>
+            <input asp-for="HouseNo" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label asp-for="StreetNo" class="form-label">Street No</label>
+            <input asp-for="StreetNo" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label asp-for="Area" class="form-label">Area</label>
+            <input asp-for="Area" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label asp-for="UserId" class="form-label">User</label>
+            <select asp-for="UserId" class="form-control" asp-items="@ViewBag.Users"></select>
+        </div>
+        <div class="mb-3">
+            <label asp-for="CityId" class="form-label">City</label>
+            <select asp-for="CityId" class="form-control" asp-items="@ViewBag.Cities"></select>
+        </div>
+        
+        <button class="btn btn-primary btnmargin">Submit</button>
+    </form>
+</div>

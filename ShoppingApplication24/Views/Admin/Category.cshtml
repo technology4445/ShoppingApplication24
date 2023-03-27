@@ -1,0 +1,37 @@
+﻿@using ShoppingApplication24.Models
+@model List<Category>
+
+<div class="box-header with-border">
+    <h3 class="box-title">Categories</h3>
+</div>
+<div class="box-body">
+    <div>
+        <table class="table table-bordered" border="1" rules="all" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Action</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var category in Model)
+                {
+                    <tr>
+
+                        <td>@category.Id</td>
+                        <td>@category.Name</td>
+                        
+                        <td>
+                            <a asp-controller="Admin" asp-action="CreateUpdateCategory" asp-route-id="@category.Id">Update</a>&nbsp;&nbsp;
+                            <a asp-controller="Admin" asp-action="DeleteCategory" asp-route-id="@category.Id" onclick="return confirm('Are You Sure To Delete Product');">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<a target="_blank" asp-controller="Admin" asp-action="CreateUpdateCategory"><button>Add Category</button></a>

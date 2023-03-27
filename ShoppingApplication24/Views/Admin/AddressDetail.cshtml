@@ -1,0 +1,47 @@
+﻿@using ShoppingApplication24.Models
+@model List<AddressDetail>
+
+
+<div class="box-header with-border">
+    <h3 class="box-title">Address</h3>
+</div>
+<div class="box-body">
+    <div>
+        <table class="table table-bordered" border="1" rules="all" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>User</th>
+                    <th>House No</th>
+                    <th>Street No</th>
+                    <th>Area</th>
+                    <th>User</th>
+                    <th>City</th>
+                    <th>Action</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var addressDetail in Model)
+                {
+                    <tr>
+
+                        <td>@addressDetail.Id</td>
+                        <td>@addressDetail.User.Name</td>
+                        <td>@addressDetail.HouseNo</td>
+                        <td>@addressDetail.StreetNo</td>
+                        <td>@addressDetail.Area</td>
+                        <td>@addressDetail.User.Name</td>
+                        <td>@addressDetail.City.Name</td>
+                        <td>
+                            <a asp-controller="Admin" asp-action="CreateUpdateAddress" asp-route-id="@addressDetail.Id">Update</a>&nbsp;&nbsp;
+                            <a asp-controller="Admin" asp-action="DeleteAddress" asp-route-id="@addressDetail.Id" onclick="return confirm('Are You Sure To Delete Product')">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<a target="_blank" asp-controller="Admin" asp-action="CreateUpdateAddress"><button>Add Address</button></a>

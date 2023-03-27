@@ -1,0 +1,108 @@
+﻿@using ShoppingApplication24.Models.ViewModels
+@model AdminDashboardViewModel
+
+
+
+
+
+<div class="box-header with-border">
+    <h3 class="box-title">Address</h3>
+</div>
+<div class="box-body">
+    <div>
+        <table class="table table-bordered" border="1" rules="all" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>User</th>
+                    <th>House No</th>
+                    <th>Street No</th>
+                    <th>Area</th>
+                    <th>User</th>
+                    <th>City</th>
+                    <th>Action</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var addressDetail in Model.AddressDetails)
+                {
+                        <tr>
+                            <td>@addressDetail.Id</td>
+                            <td>@addressDetail.User.Name</td>
+                            <td>@addressDetail.HouseNo</td>
+                            <td>@addressDetail.StreetNo</td>
+                            <td>@addressDetail.Area</td>
+                            <td>@addressDetail.User.Name</td>
+                            <td>@addressDetail.City.Name</td>
+                            <td>
+                                <a asp-controller="Admin" asp-action="CreateUpdateAddress" asp-route-id="@addressDetail.Id">Update</a>&nbsp;&nbsp;
+                                <a asp-controller="Admin" asp-action="DeleteAddress" asp-route-id="@addressDetail.Id" onclick="return confirm('Are You Sure To Delete Product')">Delete</a>
+                            </td>
+                        </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<a target="_blank" asp-controller="Admin" asp-action="CreateUpdateAddress"><button>Add Address</button></a>
+<br /><br /><br /><br />
+
+<div class="box-header with-border">
+    <h3 class="box-title">Manage Users</h3>
+</div>
+<div class="box-body">
+    <div>
+        <table class="table table-bordered" border="1" rules="all" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Phone Number</th>
+                    <th>Join Date</th>
+                    <th>Role</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model.Users)
+                {
+                    <tr>
+
+                        <td>@user.Id</td>
+                        <td>@user.Name</td>
+                        <td>@user.Email</td>
+                        <td>@user.Password</td>
+                        <td>@user.PhoneNumber</td>
+                        <td>@user.JoinOn</td>
+                        <td>@user.Role.Name</td>
+                        <td>
+                            <a asp-controller="Admin" asp-action="CreateUpdateUsers" asp-route-id="@user.Id">Update</a>&nbsp;&nbsp;
+                            <a asp-controller="Admin" asp-action="DeleteUsers" asp-route-id="@user.Id" onclick="return confirm('Are You Sure To Delete Product');">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<a target="_blank" asp-controller="Admin" asp-action="CreateUpdateUsers"><button>Add User</button></a>
+
+<h1>This is Dashboard Page</h1>
+<div class="container">
+    <ul>
+        <li><a asp-controller="Admin" asp-action="AddressDetail">AddressDetail</a></li>
+        <li><a asp-controller="Admin" asp-action="Category">Category</a></li>
+        <li><a asp-controller="Admin" asp-action="City">City</a></li>
+        <li><a asp-controller="Admin" asp-action="Image">Image</a></li>
+        <li><a asp-controller="Admin" asp-action="Order">Order</a></li>
+        <li><a asp-controller="Admin" asp-action="OrderStatus">OrderStatus</a></li>
+        <li><a asp-controller="Admin" asp-action="Products">Products</a></li>
+        <li><a asp-controller="Admin" asp-action="ProductStatus">ProductStatus</a></li>
+        <li><a asp-controller="Admin" asp-action="Role">Role</a></li>
+        <li><a asp-controller="Admin" asp-action="SubCategory">SubCategory</a></li>
+        <li><a asp-controller="Admin" asp-action="Users">Users</a></li>
+    </ul>
+</div>

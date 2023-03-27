@@ -1,0 +1,33 @@
+﻿@using ShoppingApplication24.Models;
+@model User;
+
+<div class="container">
+    <form asp-controller="Admin" asp-action="CreateUpdateUsers" method="post">
+
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">Name</label>
+            <input asp-for="Name" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label">Email</label>
+            <input asp-for="Email" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label asp-for="Password" class="form-label">Password</label>
+            <input asp-for="Password" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label asp-for="PhoneNumber" class="form-label">PhoneNumber</label>
+            <input asp-for="PhoneNumber" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label asp-for="JoinOn" class="form-label">JoinOn</label>
+            <input type="datetime-local" asp-for="JoinOn" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label asp-for="RoleId" class="form-label">RoleId</label>
+            <select asp-for="RoleId" class="form-control" asp-items="@ViewBag.Roles"></select>
+        </div>
+        <button class="btn btn-primary btnmargin">Submit</button>
+    </form>
+</div>

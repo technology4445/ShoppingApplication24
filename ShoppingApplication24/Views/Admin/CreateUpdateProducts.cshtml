@@ -1,0 +1,42 @@
+﻿@using ShoppingApplication24.Models
+@model Product;
+
+<div class="container">
+    <form asp-controller="Admin" asp-action="CreateUpdateProducts" method="post">
+        <div class="mb-3">
+            <label asp-for="Title" class="form-label">Name</label>
+            <input asp-for="Title" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label asp-for="Price" class="form-label">Price</label>
+            <input asp-for="Price" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label">Description</label>
+            <input asp-for="Description" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label asp-for="ProductStatusId" class="form-label">Product Status</label>
+            <select asp-items="@ViewBag.ProductStatus" asp-for="ProductStatusId" class="form-control"></select>
+
+        </div>
+       
+        <div class="mb-3">
+            <label asp-for="SubCategoryId" class="form-label">Sub-Category</label>
+            <select asp-for="SubCategoryId" class="form-control" asp-items="@ViewBag.SubCategory"></select>
+        </div>
+        <div class="mb-3">
+            <label asp-for="SellerId" class="form-label">UserId</label>
+            <select asp-for="SellerId" class="form-control" asp-items="@ViewBag.Users"></select>
+        </div>
+       @* <div class="mb-3">
+            <label asp-for="AddedOn" class="form-label">Added On</label>
+            <input asp-for="AddedOn" class="form-control">
+        </div>*@
+        <div class="mb-3">
+            <label asp-for="Image" class="form-label">Image</label>
+            <input asp-for="Image" class="form-control">
+        </div>
+        <button class="btn btn-primary btnmargin">Submit</button>
+    </form>
+</div>

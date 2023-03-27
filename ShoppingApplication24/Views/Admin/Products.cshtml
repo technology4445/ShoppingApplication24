@@ -1,0 +1,187 @@
+﻿@using ShoppingApplication24.Models
+@model List<Product>
+
+<div class="box-header with-border">
+    <h3 class="box-title">Products</h3>
+</div>
+<div class="box-body">
+    <div>
+        <table class="table table-bordered" border="1" rules="all" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Image</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Add Date</th>
+                    <th>Seller</th>
+                    <th>Product Status</th>
+                    <th>Sub Category</th>
+                    <th>Product Action</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var product in Model)
+                {
+                    <tr>
+
+                        <td>@product.Id</td>
+                        <td>@product.Title</td>
+                        <td><img style="width:80px;" src="@product.Image" /></td>
+                        <td>@product.Description</td>
+                        <td>Rs. @product.Price</td>
+                        <td>@product.AddedOn</td>
+                        <td>@product.Seller.Name</td>
+                        <td>@product.ProductStatus.Name</td>
+                        <td>@product.SubCategory.Name</td>
+                        <td><a asp-controller="Admin" asp-action="ViewProducts" asp-route-id="@product.Id">View</a>&nbsp;&nbsp;<a asp-controller="Admin" asp-action="CreateUpdateProducts" asp-route-id="@product.Id">Update</a>&nbsp;&nbsp;<a asp-controller="Admin" asp-action="DeleteProducts" asp-route-id="@product.Id" onclick="return confirm('Are You Sure To Delete Product')">Delete</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a target="_blank" asp-controller="Admin" asp-action="CreateUpdateProducts"><button>Add Product</button></a>
+    </div>
+</div>
+
+
+
+
+<!--
+<div class="container">
+    <div class="col-lg-3">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <img class="img-responsive" src="/images/1.jpg" alt="">
+                <div class="text-center">
+                    <p>Title: Women Clothing<br>Price: 3000PKR</p>
+                </div>
+                <a href="detail.html" class="btn btn-primary btn-custom">Details</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <img class="img-responsive" src="/images/2.jpg" alt="">
+                <div class="text-center">
+                    <p>Title: Women Clothing<br>Price: 3000PKR</p>
+                </div>
+                <a href="detail.html" class="btn btn-primary btn-custom">Details</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <img class="img-responsive" src="/images/3.jpg" alt="">
+                <div class="text-center">
+                    <p>Title: Women Clothing<br>Price: 3000PKR</p>
+                </div>
+                <a href="detail.html" class="btn btn-primary btn-custom">Details</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <img class="img-responsive" src="/images/4.jpg" alt="">
+                <div class="text-center">
+                    <p>Title: Women Clothing<br>Price: 3000PKR</p>
+                </div>
+                <a href="detail.html" class="btn btn-primary btn-custom">Details</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <img class="img-responsive" src="/images/5.jpg" alt="">
+                <div class="text-center">
+                    <p>Title: Women Clothing<br>Price: 3000PKR</p>
+                </div>
+                <a href="detail.html" class="btn btn-primary btn-custom">Details</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <img class="img-responsive" src="/images/6.jpg" alt="">
+                <div class="text-center">
+                    <p>Title: Women Clothing<br>Price: 3000PKR</p>
+                </div>
+                <a href="detail.html" class="btn btn-primary btn-custom">Details</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <img class="img-responsive" src="/images/7.jpg" alt="">
+                <div class="text-center">
+                    <p>Title: Women Clothing<br>Price: 3000PKR</p>
+                </div>
+                <a href="detail.html" class="btn btn-primary btn-custom">Details</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <img class="img-responsive" src="/images/8.jpg" alt="">
+                <div class="text-center">
+                    <p>Title: Women Clothing<br>Price: 3000PKR</p>
+                </div>
+                <a href="detail.html" class="btn btn-primary btn-custom">Details</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <img class="img-responsive" src="/images/9.jpg" alt="">
+                <div class="text-center">
+                    <p>Title: Women Clothing<br>Price: 3000PKR</p>
+                </div>
+                <a href="detail.html" class="btn btn-primary btn-custom">Details</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <img class="img-responsive" src="/images/14.jpg" alt="">
+                <div class="text-center">
+                    <p>Title: Women Clothing<br>Price: 3000PKR</p>
+                </div>
+                <a href="detail.html" class="btn btn-primary btn-custom">Details</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <img class="img-responsive" src="/images/13.jpg" alt="">
+                <div class="text-center">
+                    <p>Title: Women Clothing<br>Price: 3000PKR</p>
+                </div>
+                <a href="detail.html" class="btn btn-primary btn-custom">Details</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <img class="img-responsive" src="/images/12.jpg" alt="">
+                <div class="text-center">
+                    <p>Title: Women Clothing<br>Price: 3000PKR</p>
+                </div>
+                <a href="detail.html" class="btn btn-primary btn-custom">Details</a>
+            </div>
+        </div>
+    </div>
+</div>
+-->

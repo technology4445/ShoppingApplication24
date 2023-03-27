@@ -1,0 +1,17 @@
+﻿@using ShoppingApplication24.Models;
+@model Image;
+
+<div class="container">
+    <form asp-controller="Admin" asp-action="CreateUpdateImage" method="post">
+
+        <div class="mb-3">
+            <label asp-for="URL" class="form-label">URL</label>
+            <input asp-for="URL" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label asp-for="ProductId" class="form-label">Product</label>
+            <select asp-for="ProductId" class="form-control" asp-items="@ViewBag.Products"></select>
+        </div>
+        <button class="btn btn-primary btnmargin">Submit</button>
+    </form>
+</div>
